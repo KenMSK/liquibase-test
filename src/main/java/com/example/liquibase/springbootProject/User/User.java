@@ -1,5 +1,6 @@
 package com.example.liquibase.springbootProject.User;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,16 +14,23 @@ public class User {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "name")
   private String name;
 
-  private String remarks;
+  @Column(name = "password_hash_diff")
+  private String passwordHash;
+
+  @Column(name = "password_salt")
+  private String passwordSalt;
 
   public User() {
   }
 
-  public User(Long id, String name) {
+  public User(Long id, String name, String passwordHash, String passwordSalt) {
     this.id = id;
     this.name = name;
+    this.passwordHash = passwordHash;
+    this.passwordSalt = passwordSalt;
   }
 
   public Long getId() {
@@ -41,12 +49,20 @@ public class User {
     this.name = name;
   }
 
-  public String getRemark() {
-    return this.remarks;
+  public String getPasswordHash() {
+    return this.passwordHash;
   }
 
-  public void setRemark(String Remark) {
-    this.remarks = Remark;
+  public void setPasswordHash(String passwordHash) {
+    this.passwordHash = passwordHash;
+  }
+
+  public String getPasswordSalt() {
+    return this.passwordSalt;
+  }
+
+  public void setPasswordSalt(String passwordSalt) {
+    this.passwordSalt = passwordSalt;
   }
 
 }

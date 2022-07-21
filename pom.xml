@@ -64,7 +64,7 @@
         <version>${liquibase.version}</version>
         <configuration>
           <changelog-file>${project.basedir}/src/main/resources/config/liquibase/master.xml</changelog-file>
-          <outputChangeLogFile>dbchangelog.xml</outputChangeLogFile>
+          <outputChangeLogFile>dbchangelog.sql</outputChangeLogFile>
           <diffChangeLogFile>${project.basedir}/src/main/resources/db/migrations/${maven.build.timestamp}_changelog.sql</diffChangeLogFile>
           <propertyFile>liquibase.properties</propertyFile>
           <logging>debug</logging>

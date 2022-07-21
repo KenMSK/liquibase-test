@@ -15,8 +15,6 @@ public class Config {
   @Bean
   CommandLineRunner commandLineRunner(UserRepository userRepository) {
     return arg -> {
-      User user1 = new User(null, "sammy");
-      userRepository.saveAll(List.of(user1));
     };
   }
 

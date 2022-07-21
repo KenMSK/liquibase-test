@@ -64,8 +64,8 @@
         <version>${liquibase.version}</version>
         <configuration>
           <changelog-file>${project.basedir}/src/main/resources/config/liquibase/master.xml</changelog-file>
-          <outputChangeLogFile>dbchangelog.sql</outputChangeLogFile>
-          <diffChangeLogFile>${project.basedir}/src/main/resources/db/migrations/${maven.build.timestamp}_changelog.sql</diffChangeLogFile>
+          <outputChangeLogFile>${project.basedir}/target_liquibase/${maven.build.timestamp}_fullSchema.sql</outputChangeLogFile>
+          <diffChangeLogFile>${project.basedir}/target_liquibase/${maven.build.timestamp}_orm_diff.sql</diffChangeLogFile>
           <propertyFile>liquibase.properties</propertyFile>
           <logging>debug</logging>
           <contexts>!test</contexts>

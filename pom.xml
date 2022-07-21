@@ -13,8 +13,18 @@
   <name>springbootProject</name>
   <description>Liquibase Project for Spring Boot</description>
   <properties>
-    <java.version>17</java.version>
+    <java.version>18</java.version>
     <liquibase.propertyFile>src/main/resources/liquibase.properties</liquibase.propertyFile>
+    <liquibase.version>4.3.5</liquibase.version>
+    <liquibase-hibernate5.version>4.3.5</liquibase-hibernate5.version>
+    <javassist.version>3.24.0-GA</javassist.version>
+    <validation-api.version>2.0.1.Final</validation-api.version>
+    <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+    <hibernate5.version>5.5.3.Final</hibernate5.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
     <dependency>
@@ -47,25 +57,40 @@
       <plugin>
         <groupId>org.liquibase</groupId>
         <artifactId>liquibase-maven-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>${liquibase.version}</version>
         <configuration>
-          <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+          <changelog-file>${project.basedir}/src/main/resources/config/liquibase/master.xml</changelog-file>
+          <outputChangeLogFile>dbchangelog.xml</outputChangeLogFile>
+          <diffChangeLogFile>${project.basedir}/src/main/resources/db/migrations/${maven.build.timestamp}_changelog.sql</diffChangeLogFile>
+          <propertyFile>liquibase.properties</propertyFile>
+          <logging>debug</logging>
+          <contexts>!test</contexts>
         </configuration>
         <dependencies>
           <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+          </dependency>
+          <dependency>
             <groupId>org.liquibase.ext</groupId>
-            <artifactId>liquibase-hibernate4</artifactId>
-            <version>3.5</version>
+            <artifactId>liquibase-hibernate5</artifactId>
+            <version>${liquibase-hibernate5.version}</version>
           </dependency>
           <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring-boot.version}</version>
           </dependency>
           <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.7.3.RELEASE</version>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation-api.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javassist.version}</version>
           </dependency>
         </dependencies>
       </plugin>

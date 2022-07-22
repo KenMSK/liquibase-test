@@ -19,7 +19,7 @@
     <liquibase-hibernate5.version>4.3.5</liquibase-hibernate5.version>
     <javassist.version>3.24.0-GA</javassist.version>
     <validation-api.version>2.0.1.Final</validation-api.version>
-    <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    <maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
     <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
     <hibernate5.version>5.5.3.Final</hibernate5.version>
     <maven.compiler.source>11</maven.compiler.source>

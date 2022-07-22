@@ -1,4 +1,4 @@
-package com.example.liquibase.springbootProject.User;
+package com.diplanner.server.application.User;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

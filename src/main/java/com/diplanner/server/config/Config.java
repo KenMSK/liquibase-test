@@ -1,13 +1,10 @@
-package com.example.liquibase.config;
-
-import java.util.List;
+package com.diplanner.server.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.example.liquibase.springbootProject.User.User;
-import com.example.liquibase.springbootProject.User.UserRepository;
+import com.diplanner.server.application.User.UserRepository;
 
 @Configuration
 public class Config {
